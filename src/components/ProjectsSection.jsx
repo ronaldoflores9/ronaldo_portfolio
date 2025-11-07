@@ -75,9 +75,10 @@ export const ProjectsSection = () => {
         </h2>
 
         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Here are some of the projects I've worked on recently. Each project
-          showcases my skills in web development and my passion for creating
-          innovative solutions. !!! CAMBIAR !!!
+          Here are some of the academic and personal projects I’ve developed to
+          strengthen my skills in software engineering and problem-solving. Each
+          one reflects my curiosity, creativity, and commitment to learning
+          while applying modern technologies to real-world challenges.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
