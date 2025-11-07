@@ -12,22 +12,22 @@ export const AboutSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h3 className="text-2xl font-semibold">
-              Passionate Web Develeoper & Tech Creator !CAMBIAR!
+              Passionate Software Developer Student & Tech Innovator
             </h3>
             <p className="text-muted-foreground">
-              With a strong foundation in front-end development, I specialize in
-              crafting visually stunning and highly functional web applications.
-              My expertise lies in HTML, CSS, JavaScript, and modern frameworks
-              like React and Vue.js. I am dedicated to creating seamless user
-              experiences that captivate and engage audiences.
-              !!!CAMBIAARRRRRRR!!!!!!
+              With a strong foundation in software development, I’m passionate
+              about building reliable, creative, and efficient solutions that
+              solve real-world problems. My experience spans different areas of
+              programming, from front-end interfaces to embedded systems and
+              automation projects. I enjoy exploring new technologies, learning
+              continuously, and applying my knowledge to projects that have
+              impact.
             </p>
 
             <p className="text-muted-foreground">
-              I'm Passionate about creating elegant solutions to complex
-              problems, and I'm constantly learning new technologies and
-              techniques to stay at the forefront of the ever-evolving web
-              landscape. !!!CAMBIAARRRRRRR!!!!!!
+              I’m driven by curiosity and collaboration — I love taking part in
+              projects where design, logic, and innovation come together to
+              create meaningful results.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
@@ -56,11 +56,11 @@ export const AboutSection = () => {
                 <div className="text-left">
                   <h4 className="font-semibold text-lg">
                     {" "}
-                    Web Development !!!CAMBIAR!!!{" "}
+                    Software Development
                   </h4>
                   <p className="text-muted-foreground">
-                    Creating responsive websites and web applications with
-                    modern frameworks. !!!CAMBIAR!!!
+                    Building efficient, scalable, and well-structured solutions
+                    using modern programming languages and frameworks.
                   </p>
                 </div>
               </div>
@@ -73,11 +73,11 @@ export const AboutSection = () => {
                 <div className="text-left">
                   <h4 className="font-semibold text-lg">
                     {" "}
-                    UI/UX Design !!!CAMBIAR!!!{" "}
+                    UI/UX & Product Design
                   </h4>
                   <p className="text-muted-foreground">
-                    Creating user-centered designs that enhance the overall
-                    experience. !!!CAMBIAR!!!
+                    Designing intuitive and user-friendly interfaces that
+                    balance functionality and visual appeal.
                   </p>
                 </div>
               </div>
@@ -90,12 +90,11 @@ export const AboutSection = () => {
                 <div className="text-left">
                   <h4 className="font-semibold text-lg">
                     {" "}
-                    Project Management !!!CAMBIAR!!!{" "}
+                    Project Management & Team Collaboration
                   </h4>
                   <p className="text-muted-foreground">
-                    Overseeing projects from conception to completion, ensuring
-                    timely delivery and adherence to client requirements.
-                    !!!CAMBIAR!!!
+                    Leading and collaborating on projects from concept to
+                    delivery, ensuring organization, clarity, and teamwork.
                   </p>
                 </div>
               </div>

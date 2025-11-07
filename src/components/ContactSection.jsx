@@ -68,9 +68,11 @@ export const ContactSection = () => {
         </h2>
 
         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          I'm always excited to connect with fellow developers, potential
-          collaborators, and anyone interested in my work. Feel free to reach
-          out! !!!CAMBIAARRRRRRR!!!!!!
+          I’m currently seeking internship opportunities where I can apply my
+          software development skills, learn from experienced engineers, and
+          contribute to meaningful projects. I’m always open to connecting with
+          teams looking for passionate and driven interns ready to make an
+          impact.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">

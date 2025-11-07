@@ -1,29 +1,38 @@
 import { useState } from "react";
 import { cn } from "../lib/utils";
+const MAX_YEARS = 5;
+
 const skills = [
-  //Frontend
-  { name: "HTML/CSS", level: "95", category: "frontend" },
-  { name: "JavaScript", level: "90", category: "frontend" },
-  { name: "React", level: "85", category: "frontend" },
-  { name: "Vue.js", level: "80", category: "frontend" },
-  { name: "Node.js", level: "75", category: "backend" },
-  { name: "Express.js", level: "70", category: "backend" },
+  // Technical Skill
+  { name: "HTML/CSS", years: 5, category: "technical" },
+  { name: "JavaScript", years: 1, category: "technical" },
+  { name: "React", years: 1, category: "technical" },
+  { name: "Next.js", years: 1, category: "technical" },
+  { name: "Microsoft 365", years: 5, category: "technical" },
+  { name: "Github", years: 3, category: "technical" },
+  { name: "Web Design", years: 4, category: "technical" },
+  { name: "Figma", years: 2, category: "technical" },
+  { name: "Python", years: 4, category: "technical" },
+  { name: "C++", years: 2, category: "technical" },
+  { name: "Dart", years: 2, category: "technical" },
+  { name: "Flutter", years: 2, category: "technical" },
+  { name: "OnShape", years: 1, category: "technical" },
+  { name: "Java", years: 1, category: "technical" },
+  { name: "LaTeX", years: 1, category: "technical" },
 
-  //Backend
-  { name: "Python", level: "85", category: "backend" },
-  { name: "Django", level: "80", category: "backend" },
-  { name: "SQL", level: "75", category: "backend" },
-  { name: "MongoDB", level: "70", category: "backend" },
-  { name: "RESTful APIs", level: "80", category: "backend" },
-
-  //Tools
-  { name: "Git/GitHub", level: "90", category: "tools" },
-  { name: "Figma", level: "75", category: "tools" },
-  { name: "Webpack", level: "70", category: "tools" },
-  { name: "VS Code", level: "65", category: "tools" },
+  // Soft Skills
+  { name: "Strategic Planning", years: 5, category: "soft" },
+  { name: "Research", years: 5, category: "soft" },
+  { name: "Adaptable", years: 5, category: "soft" },
+  { name: "Fast Learner", years: 5, category: "soft" },
+  { name: "Problem Solving ", years: 5, category: "soft" },
+  { name: "Discipline", years: 5, category: "soft" },
+  { name: "Fast Learner", years: 5, category: "soft" },
+  { name: "Effective Communication", years: 5, category: "soft" },
+  { name: "Analytical Thinking", years: 5, category: "soft" },
 ];
 
-const categories = ["all", "frontend", "backend", "tools"];
+const categories = ["all", "technical", "soft"];
 
 export const SkillsSection = () => {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -67,12 +76,12 @@ export const SkillsSection = () => {
               <div className="w-full bg-secondary/50 h-2 rounded-full overflow-hidden">
                 <div
                   className="bg-primary h-2 rounded-full origin-left animate-[grow_1.5s_ease_out]"
-                  style={{ width: skill.level + "%" }}
+                  style={{ width: `${(skill.years / MAX_YEARS) * 100}%` }}
                 />
               </div>
               <div className="text-right mt-1">
                 <span className="text-sm text-muted-foreground">
-                  {skill.level}%
+                  {skill.years} yrs
                 </span>
               </div>
             </div>
