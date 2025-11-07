@@ -1,25 +1,64 @@
 import { Github, Linkedin, Mail, Phone, Send } from "lucide-react";
 import { cn } from "../lib/utils";
 import { useToast } from "../hooks/use-toast";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
 
 export const ContactSection = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  const formRef = useRef(null);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const form = formRef.current;
+    if (!form) return;
 
     setIsSubmitting(true);
 
-    setTimeout(() => {
+    const formData = new FormData(form);
+    const templateParams = {
+      from_name: formData.get("name"),
+      from_email: formData.get("email"),
+      message: formData.get("message"),
+    };
+
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const userId =
+      import.meta.env.VITE_EMAILJS_USER_ID ||
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !userId) {
+      toast({
+        title: "Email configuration missing",
+        description:
+          "EmailJS is not configured. Please set VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID and VITE_EMAILJS_USER_ID in your .env file.",
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      await emailjs.send(serviceId, templateId, templateParams, userId);
       toast({
         title: "Message Sent!",
         description:
-          "Thank you for reaching out. I'll get back to you as soon as possible. !!!CAMBIAAARRRRRRR!!!!!",
+          "Thank you for reaching out. I'll get back to you as soon as possible.",
       });
+      form.reset();
+    } catch (err) {
+      console.error("EmailJS error:", err);
+      toast({
+        title: "Failed to send",
+        description:
+          "There was an error sending your message. Please try again later or contact me directly.",
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
   return (
     <section id="contact" className="py-24 px-4 relative bg-secondary/30">
@@ -86,13 +125,10 @@ export const ContactSection = () => {
               </div>
             </div>
           </div>
-          <div
-            className="bg-card p-8 rounded-lg shadow-xs"
-            onSubmit={handleSubmit}
-          >
+          <div className="bg-card p-8 rounded-lg shadow-xs">
             <h3 className="text-2xl font-semibold mb-6"> Send Me a Message </h3>
 
-            <form className="space-y-6">
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label
                   htmlFor="name"
