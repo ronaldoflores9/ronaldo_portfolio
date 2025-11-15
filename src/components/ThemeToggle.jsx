@@ -34,9 +34,11 @@ export const ThemeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
+      aria-label={isDarkMode ? "Switch to light theme" : "Switch to dark theme"}
       className={cn(
-        "fixed max-sm:hidden top-5 right-5 z-50 p-2 rounded-full transition-colors duration-300",
-        "focus:outiline-hidden"
+        // no fixed positioning here so the parent (Navbar) controls placement
+        "hidden md:inline-flex items-center justify-center p-2 rounded-full transition-colors duration-300",
+        "focus:outline-hidden"
       )}
     >
       {isDarkMode ? (
