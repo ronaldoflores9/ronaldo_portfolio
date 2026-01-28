@@ -22,14 +22,14 @@ const skills = [
 
   // Soft Skills
   { name: "Strategic Planning", years: 5, category: "soft" },
-  { name: "Research", years: 5, category: "soft" },
+  { name: "Research & Analysis", years: 5, category: "soft" },
   { name: "Adaptable", years: 5, category: "soft" },
   { name: "Fast Learner", years: 5, category: "soft" },
   { name: "Problem Solving ", years: 5, category: "soft" },
   { name: "Discipline", years: 5, category: "soft" },
-  { name: "Fast Learner", years: 5, category: "soft" },
-  { name: "Effective Communication", years: 5, category: "soft" },
-  { name: "Analytical Thinking", years: 5, category: "soft" },
+  { name: "Teamwork", years: 5, category: "soft" },
+  { name: "Creativity", years: 5, category: "soft" },
+  { name: "Leadership", years: 5, category: "soft" },
 ];
 
 const categories = ["all", "technical", "soft"];
