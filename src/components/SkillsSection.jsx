@@ -19,6 +19,7 @@ const skills = [
   { name: "OnShape", years: 1, category: "technical" },
   { name: "Java", years: 1, category: "technical" },
   { name: "LaTeX", years: 1, category: "technical" },
+  { name: "Blender", years: 1, category: "technical" },
 
   // Soft Skills
   { name: "Strategic Planning", years: 5, category: "soft" },
