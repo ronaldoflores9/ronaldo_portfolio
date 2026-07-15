@@ -160,11 +160,11 @@ export const ExperienceRoadmap = () => {
 
       <div className="container mx-auto grid max-w-6xl gap-14 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
         <div className="text-left lg:sticky lg:top-28 lg:self-start">
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+          <div className="section-kicker mb-5">
             <Rocket size={14} aria-hidden="true" />
-            Experience roadmap
+            03 · Experience roadmap
           </div>
-          <h2 className="text-4xl font-bold tracking-[-0.04em] md:text-5xl lg:text-6xl">
+          <h2 className="text-4xl font-black tracking-[-0.045em] md:text-5xl lg:text-6xl">
             Learning by doing,{" "}
             <span className="text-primary">one milestone at a time.</span>
           </h2>
@@ -192,7 +192,7 @@ export const ExperienceRoadmap = () => {
             href="/src/assets/RONALDO%20FLORES%20RESUME.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-4 py-2.5 text-sm font-semibold transition-colors duration-300 hover:border-primary/40 hover:text-primary"
+            className="space-button-secondary mt-6 px-4 py-2.5"
           >
             View updated résumé
             <ArrowDownToLine size={16} aria-hidden="true" />

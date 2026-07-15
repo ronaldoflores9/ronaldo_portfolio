@@ -215,11 +215,11 @@ export const ProjectsSection = () => {
       <div className="container mx-auto max-w-6xl">
         <div className="mb-12 grid items-end gap-7 text-left md:mb-16 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20">
           <div>
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+            <div className="section-kicker mb-5">
               <Sparkles size={14} aria-hidden="true" />
-              Selected work
+              04 · Selected work
             </div>
-            <h2 className="text-4xl font-bold tracking-[-0.04em] md:text-5xl lg:text-6xl">
+            <h2 className="text-4xl font-black tracking-[-0.045em] md:text-5xl lg:text-6xl">
               Projects built to{" "}
               <span className="text-primary">learn, solve, and ship.</span>
             </h2>

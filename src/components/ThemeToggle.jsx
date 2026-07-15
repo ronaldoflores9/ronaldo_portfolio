@@ -1,50 +1,35 @@
-import { Sun, Moon } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
-import { cn } from "@/lib/utils";
 
 export const ThemeToggle = () => {
-  // Inicializar desde localStorage si existe; si no, asumir dark por defecto.
   const [isDarkMode, setIsDarkMode] = useState(() => {
     try {
-      const stored = localStorage.getItem("theme");
-      return stored ? stored === "dark" : true;
-    } catch (e) {
+      return localStorage.getItem("theme") !== "light";
+    } catch {
       return true;
     }
   });
 
-  // Aplicar la clase dark cuando cambie el estado y sincronizar localStorage.
   useEffect(() => {
+    document.documentElement.classList.toggle("dark", isDarkMode);
     try {
-      if (isDarkMode) {
-        document.documentElement.classList.add("dark");
-        localStorage.setItem("theme", "dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-        localStorage.setItem("theme", "light");
-      }
-    } catch (e) {
-      // Silenciar errores de acceso a localStorage
+      localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+    } catch {
+      // The visual theme still works when storage is unavailable.
     }
   }, [isDarkMode]);
 
-  const toggleTheme = () => {
-    setIsDarkMode((prev) => !prev);
-  };
   return (
     <button
-      onClick={toggleTheme}
+      type="button"
+      onClick={() => setIsDarkMode((current) => !current)}
       aria-label={isDarkMode ? "Switch to light theme" : "Switch to dark theme"}
-      className={cn(
-        // no fixed positioning here so the parent (Navbar) controls placement
-        "hidden md:inline-flex items-center justify-center p-2 rounded-full transition-colors duration-300",
-        "focus:outline-hidden"
-      )}
+      className="grid h-9 w-9 place-items-center rounded-full border border-border bg-card/70 text-foreground/65 transition-all duration-300 hover:border-primary/40 hover:text-primary"
     >
       {isDarkMode ? (
-        <Sun className="h-6 w-6 text-yellow-300" />
+        <Sun size={16} aria-hidden="true" />
       ) : (
-        <Moon className="h-6 w-6 text-blue-900" />
+        <Moon size={16} aria-hidden="true" />
       )}
     </button>
   );

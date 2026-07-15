@@ -172,7 +172,7 @@ export const SkillsSection = () => {
   return (
     <section
       id="skills"
-      className="relative isolate overflow-hidden border-y border-border/50 bg-background px-4 py-24 md:py-32"
+      className="relative isolate overflow-hidden border-y border-border/50 bg-background/55 px-4 py-24 backdrop-blur-sm md:py-32"
     >
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute left-[-12rem] top-20 h-96 w-96 rounded-full bg-primary/10 blur-[110px]" />
@@ -183,11 +183,11 @@ export const SkillsSection = () => {
       <div className="container mx-auto max-w-6xl">
         <div className="grid items-end gap-10 border-b border-border/70 pb-10 lg:grid-cols-[1.25fr_0.75fr] lg:gap-16">
           <div className="text-left">
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+            <div className="section-kicker mb-5">
               <Sparkles size={14} aria-hidden="true" />
-              Capability map
+              02 · Capability map
             </div>
-            <h2 className="max-w-3xl text-4xl font-bold tracking-[-0.04em] md:text-5xl lg:text-6xl">
+            <h2 className="max-w-3xl text-4xl font-black tracking-[-0.045em] md:text-5xl lg:text-6xl">
               Skills that turn ideas into{" "}
               <span className="text-primary">working products.</span>
             </h2>
