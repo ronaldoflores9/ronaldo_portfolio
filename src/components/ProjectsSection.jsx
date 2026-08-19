@@ -1,155 +1,173 @@
 import { ArrowRight, ExternalLink, Github } from "lucide-react";
+import { SectionHeader } from "./SectionHeader";
 
 const projects = [
   {
     id: 1,
     title: "MiUni Website",
     description:
-      "An informative and interactive site that presents MiUni’s mission, vision, team, partnerships, and student-life features — including local bars, restaurants, and organizations. It serves as a public preview of the platform’s core features and community focus.",
+      "An informative, interactive site presenting MiUni's mission, vision, team, partnerships, and student-life features — a public preview of the platform's core experience.",
     image: "/projects/project1.png",
     tags: ["React", "Next.js", "Tailwind CSS", "Firebase"],
     demoUrl: "https://www.miunipr.com/",
     githubURL: "#",
+    status: "live",
+    featured: true,
   },
   {
     id: 2,
     title: "Movie Searcher",
     description:
-      "A Python application that connects to an external movie database API, allowing users to search films and retrieve detailed metadata including genre, cast, release date, and ratings. Implemented using the requests library for API communication and JSON parsing to manage and display structured data efficiently.",
+      "A Python app connecting to an external movie database API. Search films and retrieve metadata — genre, cast, release date, ratings — via JSON parsing.",
     image: "/projects/project2.png",
-    tags: ["Python", "Flask", "OMDB API", "HTML/CSS"],
+    tags: ["Python", "Flask", "OMDB API"],
     demoUrl: "#",
     githubURL: "https://github.com/ronaldoflores9/movie-searcher",
+    status: "archived",
   },
   {
     id: 3,
     title: "Personal Portfolio",
     description:
-      "This portfolio demonstrates selected projects, technical skills, and ways to contact me. It's implemented with modern web tooling (Vite, React, Tailwind) and includes a contact form wired to EmailJS so visitors can send messages directly to my email. The site is responsive, accessible, and easy to customize.",
+      "This site — built with Astro, React, and Tailwind CSS. Features an EmailJS-powered contact form, fully responsive layout, and light/dark themes.",
     image: "/projects/project3.png",
-    tags: ["React", "Tailwind CSS", "Vite"],
+    tags: ["Astro", "React", "Tailwind CSS"],
     demoUrl: "https://ronaldo-portfolio-rouge.vercel.app/",
     githubURL: "https://github.com/ronaldoflores9/ronaldo_portfolio",
+    status: "live",
   },
-
   {
     id: 4,
     title: "Fractals Generator",
     description:
-      "A C++ application that generates and visualizes fractal patterns such as the Mandelbrot set and Julia sets. It utilizes efficient algorithms to compute fractal geometry and employs a graphical library for rendering high-resolution images, allowing users to explore complex mathematical structures interactively.",
+      "A C++ application that generates and visualizes fractals like the Mandelbrot and Julia sets, using efficient algorithms and high-resolution rendering.",
     image: "/projects/project4.png",
-    tags: ["C++"],
+    tags: ["C++", "Graphics"],
     demoUrl: "#",
-    githubURL:
-      "https://github.com/UPRM-CIIC4010-S24/pa3-kevin-gomez-ronaldo-flores",
+    githubURL: "https://github.com/UPRM-CIIC4010-S24/pa3-kevin-gomez-ronaldo-flores",
+    status: "archived",
   },
   {
     id: 5,
-    title: "Space Invaders Game",
+    title: "Space Invaders",
     description:
-      "A C++ implementation of the classic Space Invaders arcade game. The game features player-controlled spaceship movement, enemy alien formations, projectile firing, and collision detection. It utilizes a graphical library to render 2D sprites and animations, providing an engaging gameplay experience that captures the essence of the original game.",
+      "A C++ take on the classic arcade game — player movement, enemy formations, projectile firing, collision detection, and 2D sprite rendering.",
     image: "/projects/project5.png",
-    tags: ["C++"],
+    tags: ["C++", "Game Dev"],
     demoUrl: "#",
-    githubURL:
-      "https://github.com/UPRM-CIIC4010-S24/pa2-christian-berberena-ronaldo-flores",
+    githubURL: "https://github.com/UPRM-CIIC4010-S24/pa2-christian-berberena-ronaldo-flores",
+    status: "archived",
   },
   {
     id: 6,
-    title: "Blackjack Game",
+    title: "Blackjack Engine",
     description:
-      "A C++ console application that simulates the classic card game Blackjack. The program allows a single player to compete against a computer dealer, implementing standard Blackjack rules such as hitting, standing, doubling down, and splitting pairs. It features a simple text-based interface for user interaction and includes functionalities for shuffling and dealing cards, calculating hand values, and determining game outcomes.",
+      "A C++ console Blackjack simulation vs. a computer dealer — full rules (hit, stand, double, split), shuffle/deal logic, and hand-value calculations.",
     image: "/projects/project6.png",
-    tags: ["C++"],
+    tags: ["C++", "Logic"],
     demoUrl: "#",
     githubURL: "https://github.com/ronaldoflores9/blackjack",
+    status: "archived",
   },
 ];
 
+const statusStyle = {
+  live:     { label: "LIVE",     color: "hsl(145 65% 58%)" },
+  archived: { label: "ARCHIVED", color: "hsl(var(--primary))" },
+};
+
+const ProjectCard = ({ project, i }) => {
+  const s = statusStyle[project.status];
+  return (
+    <div
+      data-reveal
+      data-reveal-delay={String(i * 70)}
+      className={cnFeatured(project.featured)}
+    >
+      {/* Spotlight hover */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10"
+        style={{ background: "radial-gradient(circle at 50% 0%, hsl(var(--primary) / 0.14) 0%, transparent 60%)" }}
+      />
+
+      {/* Image */}
+      <div className={`overflow-hidden relative ${project.featured ? "h-56 md:h-full md:min-h-[260px]" : "h-44"}`}>
+        <img
+          src={project.image}
+          alt={project.title}
+          loading="lazy"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+        <div aria-hidden="true" className="absolute inset-0 pointer-events-none"
+          style={{ background: "linear-gradient(to bottom, transparent 30%, hsl(var(--card)) 100%)" }} />
+        <div className="absolute top-3 left-3 z-20">
+          <span className="text-[10px] font-mono text-white/70 bg-black/40 backdrop-blur-sm px-2 py-0.5 rounded">
+            MISSION // {String(project.id).padStart(2, "0")}
+          </span>
+        </div>
+        <div className="absolute top-3 right-3 z-20">
+          <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded flex items-center gap-1"
+            style={{ color: s.color, background: `${s.color}1f`, border: `1px solid ${s.color}55` }}>
+            <span className="w-1.5 h-1.5 rounded-full" style={{ background: s.color }} /> {s.label}
+          </span>
+        </div>
+      </div>
+
+      {/* Body */}
+      <div className="p-5 relative z-20 flex flex-col">
+        <div className="flex flex-wrap gap-1.5 mb-3">
+          {project.tags.map((tag) => (
+            <span key={tag} className="px-2 py-0.5 text-[11px] font-medium border border-primary/25 rounded-full bg-primary/5 text-primary/80">
+              {tag}
+            </span>
+          ))}
+        </div>
+        <h3 className="text-lg font-semibold mb-1">{project.title}</h3>
+        <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{project.description}</p>
+        <div className="flex gap-2 mt-auto">
+          {project.demoUrl && project.demoUrl !== "#" && (
+            <a href={project.demoUrl} target="_blank" rel="noopener noreferrer"
+              aria-label={`Live demo of ${project.title}`}
+              className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full bg-primary/10 hover:bg-primary/20 text-primary transition-colors border border-primary/20">
+              <ExternalLink size={12} /> Demo
+            </a>
+          )}
+          {project.githubURL && project.githubURL !== "#" && (
+            <a href={project.githubURL} target="_blank" rel="noopener noreferrer"
+              aria-label={`GitHub repo for ${project.title}`}
+              className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full bg-primary/10 hover:bg-primary/20 text-primary transition-colors border border-primary/20">
+              <Github size={12} /> Code
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const cnFeatured = (featured) =>
+  [
+    "group panel card-hover hover:border-primary/40 hover:shadow-[0_0_36px_hsl(var(--primary)/0.22)] flex flex-col",
+    featured ? "md:col-span-2 md:grid md:grid-cols-2" : "",
+  ].join(" ");
+
 export const ProjectsSection = () => {
   return (
-    <section id="projects" className="py-24 px-4 relative">
-      <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-          Featured <span className="text-primary"> Projects</span>
-        </h2>
+    <section id="projects" className="py-28 px-4 relative overflow-hidden">
+      <div className="container mx-auto max-w-5xl relative">
+        <SectionHeader num="04" label="Projects" title="Mission" accent="Log"
+          subtitle="Academic and personal projects reflecting my curiosity, creativity, and drive to keep building." />
 
-        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Here are some of the academic and personal projects I’ve developed to
-          strengthen my skills in software engineering and problem-solving. Each
-          one reflects my curiosity, creativity, and commitment to learning
-          while applying modern technologies to real-world challenges.
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, key) => (
-            <div
-              key={key}
-              className="group bg-card rounded-lg overflow-hidden shadow-xs card-hover"
-            >
-              <div className="h-48 overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-              </div>
-              <div className="p-6">
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag, i) => (
-                    <span
-                      key={i}
-                      className="px-2 py-1 text-xs font-medium border rounded-full bg-secondary text-secondary-foreground"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <h3 className="text-xl font-semibold mb-1">{project.title}</h3>
-                <p className="text-muted-foreground text-sm mb-4">
-                  {project.description}
-                </p>
-                <div className="flex justify-between items-center">
-                  <div className="flex space-x-3">
-                    {project.demoUrl &&
-                      project.demoUrl !== "#" &&
-                      project.demoUrl.trim() !== "" && (
-                        <a
-                          href={project.demoUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                        >
-                          <ExternalLink size={20} />
-                        </a>
-                      )}
-                    {project.githubURL &&
-                      project.githubURL !== "#" &&
-                      project.githubURL.trim() !== "" && (
-                        <a
-                          href={project.githubURL}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                        >
-                          <Github size={20} />
-                        </a>
-                      )}
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project, i) => (
+            <ProjectCard key={project.id} project={project} i={i} />
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <a
-            className="cosmic-button w-fit flex items-center mx-auto gap-2"
-            target="_blank"
-            href="https://github.com/ronaldoflores9"
-          >
-            Check My Github <ArrowRight size={16} />
+        <div data-reveal data-reveal-delay="200" className="text-center mt-12">
+          <a className="cosmic-button" target="_blank" rel="noopener noreferrer" href="https://github.com/ronaldoflores9">
+            All Repositories <ArrowRight size={16} />
           </a>
         </div>
       </div>

@@ -1,0 +1,360 @@
+@import "tailwindcss";
+
+/* ════════════════════════════════════════════════════════════
+   DESIGN TOKENS  ·  dark-first cosmic system, single violet accent
+   ════════════════════════════════════════════════════════════ */
+@theme {
+  --color-border: hsl(var(--border));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-ring: hsl(var(--primary));
+
+  --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Space Mono", ui-monospace, monospace;
+
+  /* ── Motion ── */
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-float-slow: float 11s ease-in-out infinite;
+  --animate-pulse-subtle: pulse-subtle 4s ease-in-out infinite;
+  --animate-fade-in: fade-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  --animate-fade-in-delay-1: fade-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
+  --animate-fade-in-delay-2: fade-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+  --animate-fade-in-delay-3: fade-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.45s forwards;
+  --animate-fade-in-delay-4: fade-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.6s forwards;
+  --animate-fade-in-delay-5: fade-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.75s forwards;
+  --animate-meteor: meteor 6s linear infinite;
+  --animate-orbit: orbit 20s linear infinite;
+  --animate-orbit-reverse: orbit 30s linear infinite reverse;
+  --animate-orbit-slow: orbit 45s linear infinite;
+  --animate-drift: drift 14s ease-in-out infinite;
+  --animate-drift-slow: drift 22s ease-in-out infinite;
+  --animate-twinkle: twinkle 3s ease-in-out infinite;
+  --animate-nebula-pulse: nebula-pulse 9s ease-in-out infinite;
+  --animate-ring-spin: ring-spin 26s linear infinite;
+  --animate-ring-spin-slow: ring-spin 60s linear infinite;
+  --animate-blink: blink 1.1s step-start infinite;
+  --animate-aurora: aurora 18s ease-in-out infinite;
+  --animate-shimmer: shimmer 3s linear infinite;
+  --animate-scroll-x: scroll-x 36s linear infinite;
+  --animate-gradient-pan: gradient-pan 6s ease infinite;
+  --animate-glow-pulse: glow-pulse 4s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-12px); }
+  }
+  @keyframes pulse-subtle {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.7; }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes meteor {
+    0%   { transform: rotate(215deg) translateX(0); opacity: 0; }
+    10%  { opacity: 1; }
+    70%  { opacity: 1; }
+    100% { transform: rotate(215deg) translateX(-650px); opacity: 0; }
+  }
+  @keyframes orbit {
+    from { transform: rotate(0deg) translateX(60px) rotate(0deg); }
+    to   { transform: rotate(360deg) translateX(60px) rotate(-360deg); }
+  }
+  @keyframes drift {
+    0%, 100% { transform: translate(0, 0); }
+    25%       { transform: translate(14px, -10px); }
+    50%       { transform: translate(-8px, -18px); }
+    75%       { transform: translate(-14px, -4px); }
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.25; transform: scale(0.55); }
+  }
+  @keyframes nebula-pulse {
+    0%, 100% { opacity: 0.14; transform: scale(1); }
+    50%       { opacity: 0.32; transform: scale(1.1); }
+  }
+  @keyframes ring-spin {
+    from { transform: rotateX(70deg) rotateZ(0deg); }
+    to   { transform: rotateX(70deg) rotateZ(360deg); }
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+  }
+  @keyframes aurora {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+    33%       { transform: translate(6%, -4%) scale(1.1); opacity: 0.75; }
+    66%       { transform: translate(-5%, 5%) scale(0.95); opacity: 0.6; }
+  }
+  @keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  @keyframes scroll-x {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @keyframes gradient-pan {
+    0%, 100% { background-position: 0% 50%; }
+    50%       { background-position: 100% 50%; }
+  }
+  @keyframes glow-pulse {
+    0%, 100% { box-shadow: 0 0 16px hsl(var(--primary) / 0.25); }
+    50%       { box-shadow: 0 0 32px hsl(var(--primary) / 0.5); }
+  }
+}
+
+@layer base {
+  :root {
+    /* Light mode — clean, bright cosmic */
+    --background: 240 30% 98%;
+    --foreground: 240 30% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 30% 10%;
+    --secondary: 240 24% 94%;
+    --secondary-foreground: 240 30% 18%;
+    --muted: 240 20% 92%;
+    --muted-foreground: 240 12% 42%;
+    --accent: 265 80% 60%;
+    --accent-foreground: 0 0% 100%;
+    --primary: 265 80% 58%;
+    --primary-foreground: 0 0% 100%;
+    --border: 240 20% 88%;
+  }
+
+  .dark {
+    /* Dark mode (default) — deep space indigo, single violet accent */
+    --background: 240 32% 5%;
+    --foreground: 230 30% 94%;
+    --card: 240 28% 9%;
+    --card-foreground: 230 30% 94%;
+    --secondary: 240 24% 13%;
+    --secondary-foreground: 230 25% 88%;
+    --muted: 240 22% 16%;
+    --muted-foreground: 235 16% 64%;
+    --accent: 265 85% 70%;
+    --accent-foreground: 240 32% 6%;
+    --primary: 265 85% 70%;
+    --primary-foreground: 240 32% 6%;
+    --border: 240 22% 18%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+    font-family: var(--font-sans);
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.3);
+    color: hsl(var(--foreground));
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: hsl(var(--background)); }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.4);
+    border-radius: 99px;
+    border: 2px solid hsl(var(--background));
+  }
+  ::-webkit-scrollbar-thumb:hover { background: hsl(var(--primary) / 0.6); }
+
+  /* ── Scroll reveal ── */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  [data-reveal].revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   LAYOUT
+   ════════════════════════════════════════════════════════════ */
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  @media (width >= 640px)  { max-width: 640px; }
+  @media (width >= 768px)  { max-width: 768px; }
+  @media (width >= 1024px) { max-width: 1024px; }
+  @media (width >= 1280px) { max-width: 1180px; }
+}
+
+/* ════════════════════════════════════════════════════════════
+   TYPOGRAPHY / TEXT EFFECTS
+   ════════════════════════════════════════════════════════════ */
+@utility text-glow {
+  text-shadow: 0 0 24px hsl(var(--primary) / 0.55);
+}
+
+@utility text-gradient {
+  background: linear-gradient(110deg, hsl(265 90% 82%), hsl(265 85% 68%), hsl(290 70% 72%));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@utility text-gradient-cosmic {
+  background: linear-gradient(135deg, hsl(265 90% 84%), hsl(265 85% 68%), hsl(245 80% 70%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Eyebrow / mono section label */
+@utility eyebrow {
+  @apply font-mono text-xs tracking-[0.3em] uppercase text-primary/70;
+}
+
+/* ════════════════════════════════════════════════════════════
+   BUTTONS
+   ════════════════════════════════════════════════════════════ */
+@utility cosmic-button {
+  @apply relative inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full
+         font-medium overflow-hidden transition-all duration-300
+         hover:scale-[1.03] active:scale-95;
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(290 65% 58%));
+  color: hsl(var(--primary-foreground));
+  box-shadow: 0 0 0 1px hsl(var(--primary) / 0.3), 0 8px 24px hsl(var(--primary) / 0.35);
+}
+@utility cosmic-button-ghost {
+  @apply inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full font-medium
+         border border-primary/40 text-primary transition-all duration-300
+         hover:bg-primary/10 hover:border-primary/70 hover:scale-[1.03] active:scale-95;
+}
+
+/* ════════════════════════════════════════════════════════════
+   SURFACES
+   ════════════════════════════════════════════════════════════ */
+@utility glass-card {
+  background: hsl(var(--card) / 0.6);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid hsl(var(--border) / 0.8);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.28),
+              inset 0 1px 0 hsl(0 0% 100% / 0.04);
+}
+
+/* Card with animated gradient border on hover */
+@utility panel {
+  @apply relative rounded-2xl overflow-hidden;
+  background: hsl(var(--card) / 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid hsl(var(--border));
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+@utility card-hover {
+  @apply transition-all duration-300 hover:-translate-y-1;
+}
+
+/* ════════════════════════════════════════════════════════════
+   COSMIC DECOR
+   ════════════════════════════════════════════════════════════ */
+@utility star {
+  @apply absolute rounded-full bg-white;
+  box-shadow: 0 0 8px 1px rgba(255, 255, 255, 0.5);
+}
+@utility meteor {
+  @apply absolute bg-gradient-to-r from-white via-white to-transparent rounded-full;
+  box-shadow: 0 0 12px 2px rgba(255, 255, 255, 0.4);
+}
+@utility nebula-orb {
+  @apply absolute rounded-full pointer-events-none;
+  filter: blur(80px);
+}
+@utility planet {
+  @apply absolute rounded-full pointer-events-none;
+  box-shadow:
+    inset -4px -4px 12px rgba(0, 0, 0, 0.55),
+    inset 4px 4px 10px rgba(255, 255, 255, 0.14),
+    0 0 28px 4px hsl(var(--primary) / 0.22);
+}
+@utility orbital-ring {
+  @apply absolute rounded-full border pointer-events-none;
+  border-color: hsl(var(--primary) / 0.22);
+  transform-style: preserve-3d;
+}
+@utility constellation-dot {
+  @apply absolute rounded-full bg-white pointer-events-none;
+  box-shadow: 0 0 4px 1px rgba(255, 255, 255, 0.6);
+}
+@utility constellation-line {
+  @apply absolute pointer-events-none;
+  background: hsl(var(--primary) / 0.25);
+  height: 1px;
+  transform-origin: left center;
+}
+
+/* Faint dot-grid backdrop */
+@utility cosmic-grid {
+  background-image: radial-gradient(
+    circle,
+    hsl(var(--primary) / 0.1) 1px,
+    transparent 1px
+  );
+  background-size: 30px 30px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 30%, transparent 80%);
+}
+
+/* Top-edge shimmer line for cards / sections */
+@utility cosmic-edge-glow {
+  background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.6), transparent);
+}
+
+/* Animated shimmer sweep for borders/highlights */
+@utility shimmer-line {
+  background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.8), transparent);
+  background-size: 200% 100%;
+}

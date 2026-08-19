@@ -1,0 +1,45 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { StarBackground } from "../components/StarBackground";
+import { Navbar } from "../components/Navbar";
+import { HeroSection } from "../components/HeroSection";
+import { AboutSection } from "../components/AboutSection";
+import { SkillsSection } from "../components/SkillsSection";
+import { JourneySection } from "../components/JourneySection";
+import { ProjectsSection } from "../components/ProjectsSection";
+import { ContactWithToaster } from "../components/ContactWithToaster";
+import { Footer } from "../components/Footer";
+import "../styles/global.css";
+---
+
+<Layout>
+  <div class="min-h-screen bg-background text-foreground overflow-x-hidden">
+    <!-- Animated star + nebula background -->
+    <StarBackground client:load />
+
+    <!-- Navbar with active-section tracking -->
+    <Navbar client:load />
+
+    <main>
+      <!-- Hero: client:load for typewriter effect -->
+      <HeroSection client:load />
+
+      <!-- Static sections — zero JS, pure HTML -->
+      <AboutSection />
+
+      <!-- Skills filter needs React state -->
+      <SkillsSection client:visible />
+
+      <!-- Journey timeline (static, scroll-revealed) -->
+      <JourneySection />
+
+      <!-- Static projects grid -->
+      <ProjectsSection />
+
+      <!-- Contact form + toast -->
+      <ContactWithToaster client:visible />
+    </main>
+
+    <Footer />
+  </div>
+</Layout>

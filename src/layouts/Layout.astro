@@ -1,0 +1,97 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Ronaldo Flores | Portfolio",
+  description = "Ronaldo Flores — Software Engineering student, Collins Aerospace co-op, and NASA RASC-AL Power Systems member. Building impactful software across aerospace, AI, mobile, and web.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+    <!-- Open Graph / Social sharing -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:title"       content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image"       content="/profile.jpg" />
+    <meta property="og:image:alt"   content="Ronaldo Flores — Software Engineer" />
+
+    <!-- Twitter / X card -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image"       content="/profile.jpg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Prevent flash of wrong theme -->
+    <script is:inline>
+      (function () {
+        try {
+          const stored = localStorage.getItem("theme");
+          if (stored === "light") {
+            document.documentElement.classList.remove("dark");
+          } else {
+            document.documentElement.classList.add("dark");
+            if (!stored) localStorage.setItem("theme", "dark");
+          }
+        } catch (e) {}
+      })();
+    </script>
+
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+
+    <!-- Global scroll-reveal: elements with [data-reveal] fade+slide in when visible -->
+    <script is:inline>
+      (function () {
+        function initReveal() {
+          var els = document.querySelectorAll("[data-reveal]");
+          if (!els.length) return;
+
+          var observer = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (!entry.isIntersecting) return;
+                var delay = entry.target.dataset.revealDelay || "0";
+                setTimeout(function () {
+                  entry.target.classList.add("revealed");
+                }, Math.min(Number(delay), 220));
+                observer.unobserve(entry.target);
+              });
+            },
+            { threshold: 0.01, rootMargin: "0px 0px 120px 0px" }
+          );
+
+          els.forEach(function (el) {
+            observer.observe(el);
+          });
+        }
+
+        // Run after DOM is ready
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", initReveal);
+        } else {
+          initReveal();
+        }
+      })();
+    </script>
+  </body>
+</html>
