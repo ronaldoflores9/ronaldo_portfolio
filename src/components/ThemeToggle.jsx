@@ -1,18 +1,26 @@
-import { Sun, Moon } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export const ThemeToggle = () => {
+<<<<<<< HEAD
   const [isDark, setIsDark] = useState(() => {
     try {
       const stored = localStorage.getItem("theme");
       return stored ? stored === "dark" : true;
+=======
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    try {
+      return localStorage.getItem("theme") !== "light";
+>>>>>>> 6740910df849b8fd495a327da8b4127d3a947df8
     } catch {
       return true;
     }
   });
 
   useEffect(() => {
+    document.documentElement.classList.toggle("dark", isDarkMode);
     try {
+<<<<<<< HEAD
       if (isDark) {
         document.documentElement.classList.add("dark");
         localStorage.setItem("theme", "dark");
@@ -73,6 +81,26 @@ export const ThemeToggle = () => {
             : "0 0 8px hsl(45 90% 60% / 0.8)",
         }}
       />
+=======
+      localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+    } catch {
+      // The visual theme still works when storage is unavailable.
+    }
+  }, [isDarkMode]);
+
+  return (
+    <button
+      type="button"
+      onClick={() => setIsDarkMode((current) => !current)}
+      aria-label={isDarkMode ? "Switch to light theme" : "Switch to dark theme"}
+      className="grid h-9 w-9 place-items-center rounded-full border border-border bg-card/70 text-foreground/65 transition-all duration-300 hover:border-primary/40 hover:text-primary"
+    >
+      {isDarkMode ? (
+        <Sun size={16} aria-hidden="true" />
+      ) : (
+        <Moon size={16} aria-hidden="true" />
+      )}
+>>>>>>> 6740910df849b8fd495a327da8b4127d3a947df8
     </button>
   );
 };

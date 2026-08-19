@@ -6,28 +6,27 @@ const RADIUS = 30;
 const STROKE = 3.5;
 const CIRC = 2 * Math.PI * RADIUS;
 
-// level: 3 = Advanced, 2 = Proficient, 1 = Familiar
 const LEVELS = { 3: "Advanced", 2: "Proficient", 1: "Familiar" };
 
 const techSkills = [
-  { name: "HTML/CSS",        abbr: "HTML", level: 3 },
-  { name: "Python",          abbr: "Py",   level: 3 },
-  { name: "Web Design",      abbr: "WD",   level: 3 },
-  { name: "Microsoft 365",   abbr: "M365", level: 3 },
-  { name: "C++",             abbr: "C++",  level: 2 },
-  { name: "GitHub",          abbr: "Git",  level: 2 },
-  { name: "Figma",           abbr: "Fig",  level: 2 },
-  { name: "Dart",            abbr: "Dart", level: 2 },
-  { name: "Flutter",         abbr: "Flu",  level: 2 },
-  { name: "JavaScript",      abbr: "JS",   level: 2 },
-  { name: "React",           abbr: "Re",   level: 2 },
-  { name: "Next.js",         abbr: "Next", level: 2 },
-  { name: "Java",            abbr: "Java", level: 1 },
-  { name: "Firebase",        abbr: "Fire", level: 1 },
-  { name: "Android Studio",  abbr: "AS",   level: 1 },
-  { name: "OnShape",         abbr: "CAD",  level: 1 },
-  { name: "LaTeX",           abbr: "TeX",  level: 1 },
-  { name: "Blender",         abbr: "3D",   level: 1 },
+  { name: "HTML/CSS",       abbr: "HTML", level: 3 },
+  { name: "Python",         abbr: "Py",   level: 3 },
+  { name: "Web Design",     abbr: "WD",   level: 3 },
+  { name: "Microsoft 365",  abbr: "M365", level: 3 },
+  { name: "C++",            abbr: "C++",  level: 2 },
+  { name: "GitHub",         abbr: "Git",  level: 2 },
+  { name: "Figma",          abbr: "Fig",  level: 2 },
+  { name: "Dart",           abbr: "Dart", level: 2 },
+  { name: "Flutter",        abbr: "Flu",  level: 2 },
+  { name: "JavaScript",     abbr: "JS",   level: 2 },
+  { name: "React",          abbr: "Re",   level: 2 },
+  { name: "Next.js",        abbr: "Next", level: 2 },
+  { name: "Java",           abbr: "Java", level: 1 },
+  { name: "Firebase",       abbr: "Fire", level: 1 },
+  { name: "Android Studio", abbr: "AS",   level: 1 },
+  { name: "OnShape",        abbr: "CAD",  level: 1 },
+  { name: "LaTeX",          abbr: "TeX",  level: 1 },
+  { name: "Blender",        abbr: "3D",   level: 1 },
 ];
 
 const softSkills = [
@@ -101,7 +100,6 @@ export const SkillsSection = () => {
         <SectionHeader num="02" label="Skills" title="Tech" accent="Arsenal"
           subtitle="The tools and languages I build with, plus the strengths I bring to a team." />
 
-        {/* Filters */}
         <div data-reveal className="flex flex-col items-center gap-5 mb-12">
           <div className="flex flex-wrap justify-center gap-2.5">
             {categories.map((cat) => (
@@ -121,7 +119,6 @@ export const SkillsSection = () => {
           </div>
         </div>
 
-        {/* Technical rings */}
         {showTech && (
           <div className="mb-14">
             <div data-reveal className="flex items-center gap-3 mb-6">
@@ -137,7 +134,6 @@ export const SkillsSection = () => {
           </div>
         )}
 
-        {/* Soft skills as chips */}
         {showSoft && (
           <div data-reveal>
             <div className="flex items-center gap-3 mb-6">

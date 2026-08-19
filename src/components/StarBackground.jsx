@@ -15,7 +15,6 @@ export const StarBackground = () => {
   const nearRef = useRef(null);
   const nebulaRef = useRef(null);
 
-  // Track the active theme so the field adapts (stars/gradients) on toggle
   useEffect(() => {
     const root = document.documentElement;
     const update = () => setIsDark(root.classList.contains("dark"));
@@ -43,11 +42,11 @@ export const StarBackground = () => {
       setMeteors(
         Array.from({ length: 5 }, (_, i) => ({
           id: i,
-          tail: Math.random() * 80 + 90, // 90–170px tail
+          tail: Math.random() * 80 + 90,
           x: Math.random() * 90 + 5,
           y: Math.random() * 50,
           delay: i * 5 + Math.random() * 4,
-          duration: Math.random() * 2.5 + 4.5, // 4.5–7s
+          duration: Math.random() * 2.5 + 4.5,
         }))
       );
     };
@@ -55,7 +54,6 @@ export const StarBackground = () => {
     generate();
     window.addEventListener("resize", generate);
 
-    // ── Parallax (mouse + scroll) ──
     let mx = 0, my = 0, raf;
     const onMouse = (e) => {
       mx = (e.clientX / window.innerWidth - 0.5);
@@ -82,7 +80,6 @@ export const StarBackground = () => {
     };
   }, []);
 
-  // Theme-aware visuals (dark = bright white cosmic field, light = subtle violet)
   const starColor = isDark ? "#ffffff" : "hsl(265 45% 45%)";
   const starGlow = isDark
     ? "0 0 8px 1px rgba(255, 255, 255, 0.5)"
@@ -94,10 +91,8 @@ export const StarBackground = () => {
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0" aria-hidden="true">
-      {/* Vertical space gradient */}
       <div className="absolute inset-0" style={{ background: baseGradient }} />
 
-      {/* Nebula clouds (parallax layer) */}
       <div ref={nebulaRef} className="absolute inset-0">
         {NEBULAE.map((n) => (
           <div
@@ -116,7 +111,6 @@ export const StarBackground = () => {
         ))}
       </div>
 
-      {/* Far star layer */}
       <div ref={farRef} className="absolute inset-0">
         {stars.filter((s) => !s.near).map((s) => (
           <div
@@ -137,7 +131,6 @@ export const StarBackground = () => {
         ))}
       </div>
 
-      {/* Near star layer (more parallax) */}
       <div ref={nearRef} className="absolute inset-0">
         {stars.filter((s) => s.near).map((s) => (
           <div
@@ -158,7 +151,6 @@ export const StarBackground = () => {
         ))}
       </div>
 
-      {/* Shooting stars — bright head with a tapering tail */}
       {meteors.map((m) => (
         <div
           key={m.id}
@@ -170,7 +162,6 @@ export const StarBackground = () => {
             animationDuration: m.duration + "s",
           }}
         >
-          {/* Tail (trails behind the head) */}
           <div
             style={{
               position: "absolute",
@@ -184,7 +175,6 @@ export const StarBackground = () => {
               opacity: 0.7,
             }}
           />
-          {/* Head */}
           <div
             style={{
               position: "absolute",
@@ -200,7 +190,6 @@ export const StarBackground = () => {
         </div>
       ))}
 
-      {/* Bottom fade into background */}
       <div
         className="absolute bottom-0 left-0 right-0 h-40"
         style={{ background: "linear-gradient(to top, hsl(var(--background)), transparent)" }}
